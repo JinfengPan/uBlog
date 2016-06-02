@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "exports": {
+    "uBlog.IServices/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.5.2",
+      "compile": {
+        "bin/Debug/uBlog.IServices.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/uBlog.IServices.dll": {}
+      }
+    },
+    "uBlog.Services/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.5.2",
+      "compile": {
+        "bin/Debug/uBlog.Services.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/uBlog.Services.dll": {}
+      }
+    }
+  }
+}
