@@ -12,6 +12,7 @@ using uBlog.Options;
 using Microsoft.Extensions.Logging;
 using uBlog.Services;
 using uBlog.IServices;
+using uBlog.Repository;
 
 namespace uBlog
 {
@@ -51,6 +52,12 @@ namespace uBlog
 
             services.AddMvc();
             services.AddSingleton<ISensorDataService, SensorDataService>();
+            services.AddSingleton<IBlogPostService, BlogPostService>();
+            services.AddSingleton(typeof(UBlogContext), 
+                new UBlogContext(
+                    configuration["MongoDBCollectionString"],
+                    configuration["MondoDBNames:uBlog"]
+                ));
 
 
         }

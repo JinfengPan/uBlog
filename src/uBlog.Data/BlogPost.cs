@@ -37,6 +37,8 @@ namespace uBlog.Data
         //博客获得的赞
         public List<ProItem> Pros { get; set; }
 
+        public int ProsCount { get; set; }
+
         public List<BlogReader> LatestReaders { get; set; }
 
         //博客标签
