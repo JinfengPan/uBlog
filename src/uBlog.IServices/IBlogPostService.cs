@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace uBlog.Repository
+namespace uBlog.IServices
 {
-    public class Class1
+    public interface IBlogPostService : IBaseService
     {
     }
 }

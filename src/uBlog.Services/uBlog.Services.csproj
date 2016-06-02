@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService.cs" />
+    <Compile Include="BlogPostService.cs" />
     <Compile Include="SensorDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\uBlog.IServices\uBlog.IServices.csproj">
+    <ProjectReference Include="..\uBlog.IServices\uBlog.IServices.csproj">
       <Project>{31f149f8-8637-4cd9-8c54-5d426b0dbce6}</Project>
       <Name>uBlog.IServices</Name>
     </ProjectReference>

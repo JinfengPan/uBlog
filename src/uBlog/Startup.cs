@@ -10,8 +10,8 @@ using Microsoft.Extensions.Configuration;
 using System.IO;
 using uBlog.Options;
 using Microsoft.Extensions.Logging;
-using uBlog.IServices;
 using uBlog.Services;
+using uBlog.IServices;
 
 namespace uBlog
 {
@@ -51,6 +51,7 @@ namespace uBlog
 
             services.AddMvc();
             services.AddSingleton<ISensorDataService, SensorDataService>();
+
 
         }
 
