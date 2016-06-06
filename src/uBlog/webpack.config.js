@@ -3,7 +3,7 @@ import path from 'path';
 
 export default {
     debug: true,
-    devtool:'cheap-module-eval-source-map',
+    devtool: 'cheap-module-eval-source-map',
     entry: [
         'eventsource-polyfill',//necessary for hot reloading with IE
         'webpack-hot-middleware/client?reload=true',//note that it reloads the page if hot module reloading fails.
