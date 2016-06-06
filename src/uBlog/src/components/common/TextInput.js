@@ -3,7 +3,7 @@ import React, {PropTypes} from 'react';
 const TextInput = ({name, label, onChange, placeholder, value, error}) =>{
   let wrapperClass = 'form-group';
   if(error && error.length > 0){
-    wrappperClass += " " + 'has-error';
+    wrapperClass += " " + 'has-error';
   }
 
   return(
@@ -21,7 +21,7 @@ const TextInput = ({name, label, onChange, placeholder, value, error}) =>{
       </div>
     </div>
   );
-}
+};
 
 TextInput.propTypes ={
   name: PropTypes.string.isRequired,
@@ -30,6 +30,6 @@ TextInput.propTypes ={
   placeholder: PropTypes.string,
   value:PropTypes.string,
   error: PropTypes.string
-}
+};
 
 export default TextInput;

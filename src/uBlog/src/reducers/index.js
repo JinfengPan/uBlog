@@ -1,8 +1,13 @@
 import {combineReducers} from 'redux';
 import courses from './courseReducer';
+import ajaxCallsInProgress from './ajaxStatusReducer';
+import authors from './authorReducer';
 
+//reducer名称需要与与global state中某个state的名称一致
 const rootReducer = combineReducers({
-  courses
+  courses,
+  ajaxCallsInProgress,
+  authors
 });
 
 export default rootReducer;
