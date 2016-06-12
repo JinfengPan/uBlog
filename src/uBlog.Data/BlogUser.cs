@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace uBlog.Data
 {
     [BsonIgnoreExtraElements]
-    public class User
+    public class BlogUser
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string UserId { get; set; }

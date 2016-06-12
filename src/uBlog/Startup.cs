@@ -75,6 +75,13 @@ namespace uBlog
             app.UseRuntimeInfoPage("/info");
             app.UseDefaultFiles();
             app.UseStaticFiles();
+
+
+            //要设定接受来自哪个授权服务器的access_token
+            app.UseJwtBearerAuthentication(new JwtBearerOptions {
+
+            });
+
             app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>

@@ -16,16 +16,21 @@
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <ItemGroup>
+    <DnxInvisibleContent Include=".editorconfig" />
     <DnxInvisibleContent Include="bower.json" />
     <DnxInvisibleContent Include=".bowerrc" />
     <DnxInvisibleContent Include="package.json" />
     <DnxInvisibleContent Include=".npmrc" />
+    <DnxInvisibleContent Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\uBlog.Data\uBlog.Data.csproj" />
     <ProjectReference Include="..\uBlog.IServices\uBlog.IServices.csproj" />
     <ProjectReference Include="..\uBlog.Repository\uBlog.Repository.csproj" />
     <ProjectReference Include="..\uBlog.Services\uBlog.Services.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <DnxInvisibleFolder Include=".idea\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\DotNet.Web\Microsoft.DotNet.Web.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>
