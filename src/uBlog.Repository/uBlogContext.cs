@@ -24,8 +24,8 @@ namespace uBlog.Repository
         public IMongoCollection<BlogPost> BlogPosts 
             => Database.GetCollection<BlogPost>("blogPosts");
 
-        public IMongoCollection<User> Users
-            => Database.GetCollection<User>("users");
+        public IMongoCollection<BlogUser> Users
+            => Database.GetCollection<BlogUser>("users");
 
     }
 }

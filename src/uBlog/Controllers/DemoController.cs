@@ -151,7 +151,7 @@ namespace uBlog.Controllers
         {
             var report = blogContext.BlogPosts
                 .Aggregate()
-                .Lookup<BlogPost, User, BsonDocument>(
+                .Lookup<BlogPost, BlogUser, BsonDocument>(
                     blogContext.Users,
                     bp => bp.AuthorId,
                     u => u.UserId,

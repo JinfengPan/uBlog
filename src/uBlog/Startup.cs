@@ -13,6 +13,9 @@ using Microsoft.Extensions.Logging;
 using uBlog.Services;
 using uBlog.IServices;
 using uBlog.Repository;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.IdentityModel.Tokens;
+using IdentityServer4.AccessTokenValidation;
 
 namespace uBlog
 {
@@ -76,10 +79,22 @@ namespace uBlog
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
+            var certificate = new X509Certificate2(Convert.FromBase64String(""));
 
-            //要设定接受来自哪个授权服务器的access_token
-            app.UseJwtBearerAuthentication(new JwtBearerOptions {
+            //app.UseJwtBearerAuthentication(new JwtBearerOptions {
+            //    Audience = "http://localhost:22710/resources",
+            //    TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidAudience = "http://localhost:22710/resources",
+            //        ValidIssuer = "http://localhost:22710",
+            //        IssuerSigningKey = new X509SecurityKey(certificate)
+            //    }
 
+            //});
+
+            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            {
+                Authority = "http://localhost:22710"
             });
 
             app.UseMvcWithDefaultRoute();

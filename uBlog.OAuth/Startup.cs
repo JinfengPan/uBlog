@@ -16,6 +16,7 @@ namespace uBlog.OAuth
         {
             var inMemoryManager = new InMemoryManager();
 
+            //用来对access token进行签名的证书，包含私钥
             var certificate = Convert.FromBase64String(ConfigurationManager.AppSettings["SigningCertificate"]);
 
             var factory = new IdentityServerServiceFactory()
