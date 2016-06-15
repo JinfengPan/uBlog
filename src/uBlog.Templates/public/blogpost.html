@@ -38,90 +38,284 @@
 
 <div class="container">
     <div class="row">
-        <section class="col-lg-9">
+        <div class="col-lg-9">
 
             <article>
-                <div class="row">
-                    <div class="col-md-1" hidden-xs hidden-sm>
-                        <h1 class="post-date-day">21</h1>
-                        MAY
+                <header class="post-header">
+                    <h3 class="post-title">
+                        Windows 10 IoT开发：315MHz遥控模块+步进电机实现遥控门（树莓派3）
+                    </h3>
+                    <hr/>
+                    <div class="row post-info">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="tilexsm">
+                                <div class="tilexsm-image">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div class="tilexsm-info">
+                                    <div class="tilexsm-title byline-name">Patrick Pan</div>
+                                    <div class="tilexsm-sbtitle">
+                                        <time datetime="2016-05-21 10:00:43Z">
+                                            2016-5-21 Saturday 18:00
+                                        </time>
+                                        <small class="text-muted">(Last Edit 2016/05/21 10:23)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="reads-comments-count">
+                                <span class="label label-success">146 Reads</span>
+                                <span class="label label-primary">1 Comments</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-11">
+                </header>
+                <section class="post-content">
+                    <p><strong>这几天我用树莓派实现了一个模仿车库遥控门的设备，分享给大家。（</strong><strong>优酷视频&nbsp;<a href="http://v.youku.com/v_show/id_XMTU3ODk1NDY2OA==.html">http://v.youku.com/v_show/id_XMTU3ODk1NDY2OA==.html</a>&nbsp;)</strong></p>
+                    <p>&nbsp;</p>
+                    <p><strong>一、遥控模块</strong></p>
+                    <p>首先介绍一下我用的遥控器和接收板，这种遥控模块在中国随处可以买到，基本都是长这样的。很多卷帘门、车库门都是用这种遥控模块的。做无线电实验购买的是非锁的版本，注意最好同时购买天线。天线用的是50欧姆单芯导线，其实就是个铜丝，注意购买时候要看好频率，中国大陆的无线电许可频率是315MHz，国外也有用443MHz的，我买的遥控器是315MHz。注意遥控器发射频率和接收频率要匹配就行。遥控接收端芯片是PT2272-M4，M4的意思是点动模式，即按住遥控器按钮输出高电平，松开停止输出。遥控板的ANT端焊接天线，方向要是竖直向上的（相对你的设备）。</p>
+                    <p><img src="/uploads/wp_20160521_17_54_43_rich.jpg" data-original="/uploads/wp_20160521_17_54_43_rich.jpg" alt="" class="img-responsive img-thumbnail" style="display: inline-block;"></p>
+                    <p>遥控板的接口有7个：</p>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td width="277">
+                                <p><strong>接口</strong></p>
+                            </td>
+                            <td width="277">
+                                <p><strong>含义</strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="277">
+                                <p>GND</p>
+                            </td>
+                            <td width="277">
+                                <p>电源负极</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="277">
+                                <p>5V</p>
+                            </td>
+                            <td width="277">
+                                <p>5V电源输入</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="277">
+                                <p>D0</p>
+                            </td>
+                            <td width="277">
+                                <p>对应遥控器按钮</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="277">
+                                <p>D1</p>
+                            </td>
+                            <td width="277">
+                                <p>对应遥控器按钮</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="277">
+                                <p>D2</p>
+                            </td>
+                            <td width="277">
+                                <p>对应遥控器按钮</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="277">
+                                <p>D3</p>
+                            </td>
+                            <td width="277">
+                                <p>对应遥控器按钮</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="277">
+                                <p>VT</p>
+                            </td>
+                            <td width="277">
+                                <p>有效信号输出</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>其中，D0-D3对应遥控器上的A,B,C,D四个按钮。至于哪个是哪个，每个型号的模块不太一样，需要自己做试验。VT会在D0-D3中任何一个有信号的情况下输出高电平。也就是按下遥控器上的任意按钮，VT都会输出。</p>
+                    <p>要格外注意的是，D0-D3，以及VT输出的电压都是5V。然而树莓派的GPIO端口接收电压是3.3V，所以要根据电压分配定律用2个电阻分压到3.3V。</p>
+                    <p>电压分配定律是指在串联电路中，各负载分到的电压与其阻抗成正比关系。依此原理所实作的电路又被称为分压器。</p>
+                    <p><img src="/uploads/1_20160521094403.png" data-original="/uploads/1_20160521094403.png" alt="" class="img-responsive img-thumbnail" style="display: inline-block;"></p>
+                    <p>在只有两个阻抗的串联电路中，电压分配定律公式如下：</p>
+                    <p><img src="/uploads/2_20160521094422.png" data-original="/uploads/2_20160521094422.png" alt="" class="img-responsive img-thumbnail" style="display: inline-block;"></p>
+                    <p>所以，我采用一个4.7K和一个10K电阻，代入公式：</p>
+                    <p>Vout = 5 x (10000 / (4700 + 10000))</p>
+                    <p>约等于3.4v，是树莓派可以接受的。</p>
+                    <p><strong>二、步进电机</strong></p>
+                    <p>我用的步进电机驱动板是ULN2003的，步进电机型号是28BYJ-48，之前在博客上已经写过一篇ULN2003驱动步进电机的文章了，可以<a href="/post/2016/4/4/windows-10-iot-stepper-motor" target="_blank">点击此处阅读</a>。所以这里就不再叙述如何使用了。</p>
+                    <p><strong>三、物理连接</strong></p>
+                    <p>简要概括，ULN2003遥控板的IN1-4对应GPIO端口5,6,13,19。遥控板的VT对应GPIO04。树莓派上的2个5V输出分别给遥控板和步进电机供电。连接如下图：</p>
+                    <p><img src="/uploads/yk04-remote-door-controller-rev_bb.png" data-original="/uploads/yk04-remote-door-controller-rev_bb.png" alt="" class="img-responsive img-thumbnail" style="display: inline-block;"></p>
+                    <p>步进电机需要自己做个支架，我用的是M3口径的电钻，在雪糕棒上打孔做的。</p>
+                    <p><strong>四、爆代码</strong></p>
+                    <p>首先，要用到一个<a href="/post/2016/4/4/windows-10-iot-stepper-motor" target="_blank">这篇文章</a>里的Uln2003驱动类，把它引入工程。</p>
+                    <p>定义一个枚举类型，表示门的开关状态，还要定义一个bool类型表示电机是否正在操作中。</p>
+<pre class="prettyprint prettyprinted"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">bool</span><span class="pln"> </span><span class="typ">IsBusy</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">set</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
 
-                        <h4 class="">
-                            <a href="" title="145 Read(s), 1 Comment(s)">Windows 10 IoT开发：315MHz遥控模块+步进电机实现遥控门（树莓派3）</a>
-                        </h4>
-                        <p class="post-summary-text">
-                            这几天我用树莓派实现了一个模仿车库遥控门的设备，分享给大家。（优酷视频&nbsp;http://v.youku.com/v_show/id_XMTU3ODk1NDY2OA==.html&nbsp;)
-                            &nbsp;
-                            一、遥控模块
-                            首先介绍一下我用的遥控器和接收板，这种遥控模块在中国随处可以买到，基本都是长这样的。很多卷帘门、车库门都是用这种遥控模块的。做无线电实验购买的是非锁的版本，注意最好同时购买天线。天线用的是50欧姆单芯导线，其实就是个铜丝，注意购买时候要看好频率，中国大陆的无线电许可频率是315MHz，国外也有用443MHz的，我买的遥控器是315MHz。注意遥控器发射频率和接收频率要匹配就行。遥控接收端芯片是...
-                        </p>
+</span><span class="kwd">private</span><span class="pln"> </span><span class="typ">DoorStatus</span><span class="pln"> </span><span class="typ">Status</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">set</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">enum</span><span class="pln"> </span><span class="typ">DoorStatus</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Open</span><span class="pun">,</span><span class="pln">
+    </span><span class="typ">Closed</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                    <p>定义GPIO控制器、ULN2003步进电机驱动、遥控器VT端GPIO端口等</p>
+<pre class="prettyprint prettyprinted"><span class="kwd">public</span><span class="pln"> </span><span class="typ">GpioController</span><span class="pln"> </span><span class="typ">Controller</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">set</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="typ">GpioPin</span><span class="pln"> </span><span class="typ">PinVT</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">set</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Uln2003Driver</span><span class="pln"> </span><span class="typ">Uln2003Driver</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">set</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="typ">CancellationTokenSource</span><span class="pln"> </span><span class="typ">Cts</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">set</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span></pre>
+                    <p>定义开门、关门的方法：</p>
+<pre class="prettyprint prettyprinted"><span class="kwd">private</span><span class="pln"> async </span><span class="typ">Task</span><span class="pln"> </span><span class="typ">OpenDoorAsync</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Cts</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">CancellationTokenSource</span><span class="pun">();</span><span class="pln">
+
+    await </span><span class="typ">LogMessageAsync</span><span class="pun">(</span><span class="str">"Opening Door..."</span><span class="pun">);</span><span class="pln">
+    await </span><span class="typ">Uln2003Driver</span><span class="pun">.</span><span class="typ">TurnAsync</span><span class="pun">(</span><span class="lit">90</span><span class="pun">,</span><span class="pln"> </span><span class="typ">TurnDirection</span><span class="pun">.</span><span class="typ">Left</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Cts</span><span class="pun">.</span><span class="typ">Token</span><span class="pun">);</span><span class="pln">
+    </span><span class="typ">Status</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">DoorStatus</span><span class="pun">.</span><span class="typ">Open</span><span class="pun">;</span><span class="pln">
+    await </span><span class="typ">LogMessageAsync</span><span class="pun">(</span><span class="str">"Door is Open."</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">private</span><span class="pln"> async </span><span class="typ">Task</span><span class="pln"> </span><span class="typ">CloseDoorAsync</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Cts</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">CancellationTokenSource</span><span class="pun">();</span><span class="pln">
+
+    await </span><span class="typ">LogMessageAsync</span><span class="pun">(</span><span class="str">"Closing Door..."</span><span class="pun">);</span><span class="pln">
+    await </span><span class="typ">Uln2003Driver</span><span class="pun">.</span><span class="typ">TurnAsync</span><span class="pun">(</span><span class="lit">90</span><span class="pun">,</span><span class="pln"> </span><span class="typ">TurnDirection</span><span class="pun">.</span><span class="typ">Right</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Cts</span><span class="pun">.</span><span class="typ">Token</span><span class="pun">);</span><span class="pln">
+    </span><span class="typ">Status</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">DoorStatus</span><span class="pun">.</span><span class="typ">Closed</span><span class="pun">;</span><span class="pln">
+    await </span><span class="typ">LogMessageAsync</span><span class="pun">(</span><span class="str">"Door is Closed."</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                    <p>主要逻辑：</p>
+<pre class="prettyprint prettyprinted"><span class="typ">Controller</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">GpioController</span><span class="pun">.</span><span class="typ">GetDefault</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">null</span><span class="pln"> </span><span class="pun">!=</span><span class="pln"> </span><span class="typ">Controller</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">TxtMessage</span><span class="pun">.</span><span class="typ">Text</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> </span><span class="str">"[OK] GPIO Controller Initialized."</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="typ">Environment</span><span class="pun">.</span><span class="typ">NewLine</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="typ">Uln2003Driver</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Uln2003Driver</span><span class="pun">(</span><span class="typ">Controller</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">6</span><span class="pun">,</span><span class="pln"> </span><span class="lit">13</span><span class="pun">,</span><span class="pln"> </span><span class="lit">19</span><span class="pun">);</span><span class="pln">
+    </span><span class="typ">TxtMessage</span><span class="pun">.</span><span class="typ">Text</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> </span><span class="str">"[OK] Uln2003Driver Initialized on 5,6,13,19."</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="typ">Environment</span><span class="pun">.</span><span class="typ">NewLine</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="typ">Status</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">DoorStatus</span><span class="pun">.</span><span class="typ">Closed</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="typ">PinVT</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Controller</span><span class="pun">.</span><span class="typ">OpenPin</span><span class="pun">(</span><span class="lit">4</span><span class="pun">);</span><span class="pln">
+    </span><span class="typ">PinVT</span><span class="pun">.</span><span class="typ">SetDriveMode</span><span class="pun">(</span><span class="typ">GpioPinDriveMode</span><span class="pun">.</span><span class="typ">Input</span><span class="pun">);</span><span class="pln">
+    </span><span class="typ">TxtMessage</span><span class="pun">.</span><span class="typ">Text</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> </span><span class="str">"[OK] VT Initialized on GPIO 04."</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="typ">Environment</span><span class="pun">.</span><span class="typ">NewLine</span><span class="pun">;</span><span class="pln">
+    </span><span class="typ">PinVT</span><span class="pun">.</span><span class="typ">ValueChanged</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> async </span><span class="pun">(</span><span class="pln">sender</span><span class="pun">,</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(!</span><span class="typ">IsBusy</span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln"> </span><span class="typ">PinVT</span><span class="pun">.</span><span class="typ">Read</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> </span><span class="typ">GpioPinValue</span><span class="pun">.</span><span class="typ">High</span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln"> </span><span class="typ">Status</span><span class="pln"> </span><span class="pun">!=</span><span class="pln"> </span><span class="typ">DoorStatus</span><span class="pun">.</span><span class="typ">Open</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            </span><span class="typ">IsBusy</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+            await </span><span class="typ">LogMessageAsync</span><span class="pun">(</span><span class="str">"Remote Signal Received on VT."</span><span class="pun">);</span><span class="pln">
+            await </span><span class="typ">OpenDoorAsync</span><span class="pun">();</span><span class="pln">
+            await </span><span class="typ">Task</span><span class="pun">.</span><span class="typ">Delay</span><span class="pun">(</span><span class="lit">2000</span><span class="pun">);</span><span class="pln">
+            await </span><span class="typ">CloseDoorAsync</span><span class="pun">();</span><span class="pln">
+            </span><span class="typ">IsBusy</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">};</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                    <p>完整工程在我的GitHub上：<a href="https://github.com/EdiWang/Windows-IoT-Projects/tree/master/Edi.RPi.RemoteDoorControl" target="_blank">https://github.com/EdiWang/Windows-IoT-Projects/tree/master/Edi.RPi.RemoteDoorControl</a>&nbsp;</p>
+                    <p><strong>五、运行</strong></p>
+                    <p>按下遥控器任意按键，雪糕棒勃起。2秒后自动降下。</p>
+                    <p><img src="/uploads/wp_20160521_17_52_44_rich.jpg" data-original="/uploads/wp_20160521_17_52_44_rich.jpg" alt="" class="img-responsive img-thumbnail" style="display: inline-block;"></p>
+                </section>
+
+                <hr/>
+
+                <footer class="post-footer">
+                    <div>
+                        <a class="belong-folder">
+                            <i class="fa fa-folder"></i>
+                            <a href="#">Internet of Things</a>
+                        </a>
+
                         <ul class="tags">
-                            <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
-                            <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
-                            <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                            <li class="tag-item"><a class="tag-link" href="#">ASP.NET</a></li>
+                            <li class="tag-item"><a class="tag-link" href="#">ASP.NET</a></li>
+                            <li class="tag-item"><a class="tag-link" href="#">ASP.NET</a></li>
+                            <li class="tag-item"><a class="tag-link" href="#">ASP.NET</a></li>
+                            <li class="tag-item"><a class="tag-link" href="#">ASP.NET</a></li>
                         </ul>
                     </div>
-                </div>
+
+                    <div class="post-slug-actions">
+                        <button class="btn btn-success btn-ratings">
+                            <i class="fa fa-thumbs-up"></i>
+                            Like (
+                            <span class="like-count">6</span>)
+                        </button>
+                        <a class="btn btn-warning">
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                        <span class="text-muted none ratemessage">Thanks For Your Rating</span>
+                    </div>
+
+                </footer>
+
             </article>
             <hr/>
-
-            <article>
-                <div class="row">
-                    <div class="col-md-1" hidden-xs hidden-sm>
-                        <h1 class="post-date-day">21</h1>
-                        MAY
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tilesm">
+                        <div class="tilesm-image">
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <div class="tilesm-info">
+                            <div class="tilesm-title">Newer</div>
+                            <div class="tilesm-subtitle">None</div>
+                        </div>
                     </div>
-                    <div class="col-md-11">
-
-                        <h4 class="">
-                            <a href="" title="145 Read(s), 1 Comment(s)">Windows 10 IoT开发：315MHz遥控模块+步进电机实现遥控门（树莓派3）</a>
-                        </h4>
-                        <p class="post-summary-text">
-                            这几天我用树莓派实现了一个模仿车库遥控门的设备，分享给大家。（优酷视频&nbsp;http://v.youku.com/v_show/id_XMTU3ODk1NDY2OA==.html&nbsp;)
-                            &nbsp;
-                            一、遥控模块
-                            首先介绍一下我用的遥控器和接收板，这种遥控模块在中国随处可以买到，基本都是长这样的。很多卷帘门、车库门都是用这种遥控模块的。做无线电实验购买的是非锁的版本，注意最好同时购买天线。天线用的是50欧姆单芯导线，其实就是个铜丝，注意购买时候要看好频率，中国大陆的无线电许可频率是315MHz，国外也有用443MHz的，我买的遥控器是315MHz。注意遥控器发射频率和接收频率要匹配就行。遥控接收端芯片是...
-                        </p>
-                        <ul class="tags">
-                            <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
-                            <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
-                            <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
-                        </ul>
-                    </div>
+                    <div class="col-md-6">
+                        <div class="tilesm">
+                            <div class="tilesm-image">
+                                <i class="fa fa-chevron-left"></i>
+                            </div>
+                            <div class="tilesm-info">
+                                <div class="tilesm-title">Older</div>
+                                <a href="/post/2016/5/1/windows-10-iot-reed-light-control">Windows 10 IoT开发：干簧管控制的小灯（树莓派3）</a>
+                            </div>
+                        </div>
                 </div>
-            </article>
-            <hr/>
+            </div>
 
-            <article>
-                <div class="row">
-                    <div class="col-md-1" hidden-xs hidden-sm>
-                        <h1 class="post-date-day">21</h1>
-                        MAY
+        </div>
+            <div>
+                <h3>Comments (1)</h3>
+                <hr/>
+                <form action="/Comment/WriteComment">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input class="form-control" type="text" name="PostCommentModel.CommenterName" placeholder="Your Name"/>
+
+                            </div>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" name="PostCommentModel.Email" placeholder="Email"
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-11">
-
-                        <h4 class="">
-                            <a href="" title="145 Read(s), 1 Comment(s)">Windows 10 IoT开发：315MHz遥控模块+步进电机实现遥控门（树莓派3）</a>
-                        </h4>
-                        <p class="post-summary-text">
-                            这几天我用树莓派实现了一个模仿车库遥控门的设备，分享给大家。（优酷视频&nbsp;http://v.youku.com/v_show/id_XMTU3ODk1NDY2OA==.html&nbsp;)
-                            &nbsp;
-                            一、遥控模块
-                            首先介绍一下我用的遥控器和接收板，这种遥控模块在中国随处可以买到，基本都是长这样的。很多卷帘门、车库门都是用这种遥控模块的。做无线电实验购买的是非锁的版本，注意最好同时购买天线。天线用的是50欧姆单芯导线，其实就是个铜丝，注意购买时候要看好频率，中国大陆的无线电许可频率是315MHz，国外也有用443MHz的，我买的遥控器是315MHz。注意遥控器发射频率和接收频率要匹配就行。遥控接收端芯片是...
-                        </p>
-                        <ul class="tags">
-                            <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
-                            <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
-                            <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
-                        </ul>
+                    <div class="form-group">
+                        <textarea class="form-control" cols="60" rows="4" name="PostCommentModel.Content" placeholder="Comment here"></textarea>
                     </div>
-                </div>
-            </article>
-            <hr/>
+                </form>
+            </div>
+        </div>
 
-        </section>
+
         <aside class="col-lg-3 hidden-xs">
 
             <section class="sidebar-aboutme">
