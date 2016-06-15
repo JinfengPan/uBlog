@@ -67,13 +67,54 @@ h1, h2, h3, h4, h5, h6,
     line-height: 1.7;
     text-align: justify;
 }
-.post-summary-tags a{
-    color:#fff;
-    padding:5px;
+
+
+
+
+.btn{
+    border-radius:0;
 }
-.post-summary-tags a:hover {
+
+.btn-group-justified {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+}
+
+.btn-group-justified>.btn{
+    display: table-cell;
+    float: none;
+    width: 1%;
+}
+
+.media, .sidebar-aboutme, .search-container{
+    margin-bottom:20px;
+}
+
+.form-control{
+    border-radius:0;
+}
+
+.tags{
+    list-style-type: none;
+    padding-left:0;
+}
+
+.tags .tag-item{
+    display:inline-flex;
+    margin-bottom:10px;
+    margin-right:10px;
+}
+
+.tags .tag-item .tag-link{
+    background-color: #3A506B;
+    color:#fff;
+    padding: 5px;
+}
+.tags .tag-item a.tag-link:hover {
     background-color: #5BC0BE;
 }
-.post-summary-tags a {
-    background-color: #3A506B;
-}
+
+
+

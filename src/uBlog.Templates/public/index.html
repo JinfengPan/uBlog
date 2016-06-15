@@ -57,11 +57,11 @@
                            一、遥控模块
                            首先介绍一下我用的遥控器和接收板，这种遥控模块在中国随处可以买到，基本都是长这样的。很多卷帘门、车库门都是用这种遥控模块的。做无线电实验购买的是非锁的版本，注意最好同时购买天线。天线用的是50欧姆单芯导线，其实就是个铜丝，注意购买时候要看好频率，中国大陆的无线电许可频率是315MHz，国外也有用443MHz的，我买的遥控器是315MHz。注意遥控器发射频率和接收频率要匹配就行。遥控接收端芯片是...
                        </p>
-                       <div class="post-summary-tags">
-                           <a class="post-summary-tag" href="#">Windows 10</a>
-                           <a class="post-summary-tag" href="#">Windows 10</a>
-                           <a class="post-summary-tag" href="#">Windows 10</a>
-                       </div>
+                       <ul class="tags">
+                           <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                           <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                           <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                       </ul>
                    </div>
                </div>
            </article>
@@ -84,11 +84,11 @@
                            一、遥控模块
                            首先介绍一下我用的遥控器和接收板，这种遥控模块在中国随处可以买到，基本都是长这样的。很多卷帘门、车库门都是用这种遥控模块的。做无线电实验购买的是非锁的版本，注意最好同时购买天线。天线用的是50欧姆单芯导线，其实就是个铜丝，注意购买时候要看好频率，中国大陆的无线电许可频率是315MHz，国外也有用443MHz的，我买的遥控器是315MHz。注意遥控器发射频率和接收频率要匹配就行。遥控接收端芯片是...
                        </p>
-                       <div class="post-summary-tags">
-                           <a class="post-summary-tag" href="#">Windows 10</a>
-                           <a class="post-summary-tag" href="#">Windows 10</a>
-                           <a class="post-summary-tag" href="#">Windows 10</a>
-                       </div>
+                       <ul class="tags">
+                           <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                           <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                           <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                       </ul>
                    </div>
                </div>
            </article>
@@ -111,11 +111,11 @@
                            一、遥控模块
                            首先介绍一下我用的遥控器和接收板，这种遥控模块在中国随处可以买到，基本都是长这样的。很多卷帘门、车库门都是用这种遥控模块的。做无线电实验购买的是非锁的版本，注意最好同时购买天线。天线用的是50欧姆单芯导线，其实就是个铜丝，注意购买时候要看好频率，中国大陆的无线电许可频率是315MHz，国外也有用443MHz的，我买的遥控器是315MHz。注意遥控器发射频率和接收频率要匹配就行。遥控接收端芯片是...
                        </p>
-                       <div class="post-summary-tags">
-                           <a class="post-summary-tag" href="#">Windows 10</a>
-                           <a class="post-summary-tag" href="#">Windows 10</a>
-                           <a class="post-summary-tag" href="#">Windows 10</a>
-                       </div>
+                       <ul class="tags">
+                           <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                           <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                           <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                       </ul>
                    </div>
                </div>
            </article>
@@ -126,8 +126,9 @@
 
             <section class="sidebar-aboutme">
                 <div class="media">
-                    <a class="pull-xs-left" href="/About">
-                        <img src="" alt="Patrick Pan" style="height:77px; width:77px;" class="media-object"/>
+                    <a class="media-left" href="/About">
+                        <img src="" alt="Patrick Pan" style="width:77px;height:77px;"
+                             class="media-object img-circle" id="avatar"/>
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">Patrick Pan</h4>
@@ -135,7 +136,7 @@
                     </div>
                 </div>
 
-                <div class="btn-group btn-group-justified hidden-xs">
+                <div class="btn-group btn-group-justified">
                     <a href="mailto:flypatrickg@outlook.com" class="btn btn-success">
                         <i class="fa fa-envelope"></i>
                         Email
@@ -148,30 +149,32 @@
             </section>
 
             <section class="search-container">
-                <form action="/search/keyword" class="form-inline" method="get" role="search">
+                <form action="/search/keyword" class="form-inline" method="get">
 
-                        <input class="form-control" id="search" maxlength="30" name="term" placeholder="Search"
-                               style="width: 219px;" title="Search" type="text" />
+                            <input class="form-control" id="search" maxlength="30" name="term" placeholder="Search"
+                                 style="width: 200px;"   title="Search" type="text" />
 
 
-                        <button type="submit" class="btn btn-success">
-                            <i class="fa fa-search"></i>
-                        </button>
+
+                            <button type="submit" class="btn btn-success pull-xs-right">
+                                <i class="fa fa-search"></i>
+                            </button>
+
+
 
                 </form>
 
             </section>
 
-            <section>
-                <h3>Top Tags</h3>
+            <section id="hot-tags">
+                <h3>Hot Tags</h3>
                 <hr/>
-                <ul>
-                    <li><a href="#">ASP.NET</a></li>
-                    <li><a href="#">ASP.NET</a></li>
-                    <li><a href="#">ASP.NET</a></li>
-                    <li><a href="#">ASP.NET</a></li>
-                    <li><a href="#">ASP.NET</a></li>
-
+                <ul class="tags">
+                    <li class="tag-item"><a class="tag-link" href="#">ASP.NET</a></li>
+                    <li class="tag-item"><a class="tag-link" href="#">ASP.NET</a></li>
+                    <li class="tag-item"><a class="tag-link" href="#">ASP.NET</a></li>
+                    <li class="tag-item"><a class="tag-link" href="#">ASP.NET</a></li>
+                    <li class="tag-item"><a class="tag-link" href="#">ASP.NET</a></li>
                 </ul>
             </section>
         </aside>
@@ -181,9 +184,6 @@
 
 <footer class="container">
     <small><span>© 2016 Patrick Pan</span></small>
-    <a class="pull-xs-right">
-        <i class="fa fa-qrcode"></i>
-    </a>
 </footer>
 
 

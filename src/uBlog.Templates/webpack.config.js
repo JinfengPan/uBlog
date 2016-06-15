@@ -78,9 +78,13 @@ module.exports ={
         loader: ExtractTextPlugin.extract("style-loader","css-loader!sass-loader")
       },
       {
-        test:/\.(png|jpg|ttf|eot)$/,
+        test:/\.(ttf|eot)$/,
         exclude:/node_modules/,
         loader:'url-loader?limit=10000'
+      },
+      {
+        test:/\.(jpg|png)$/,
+        loader:'file?name=[path][name].[hash].[ext]'
       },
       // the url-loader uses DataUrls.
       // the file-loader emits files.
