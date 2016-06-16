@@ -96,7 +96,7 @@ namespace uBlog
             {
                 Authority = "http://localhost:22710"
             });
-
+            app.UseSession();
             app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>

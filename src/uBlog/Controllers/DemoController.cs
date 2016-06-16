@@ -10,6 +10,7 @@ using uBlog.Data;
 using MongoDB.Driver.Linq;
 using System.Collections;
 using MongoDB.Bson.IO;
+using Microsoft.AspNetCore.Mvc.TagHelpers
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
