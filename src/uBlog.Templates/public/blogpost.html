@@ -279,7 +279,8 @@
                             <div class="tilesm-subtitle">None</div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
                         <div class="tilesm">
                             <div class="tilesm-image">
                                 <i class="fa fa-chevron-left"></i>
@@ -289,11 +290,12 @@
                                 <a href="/post/2016/5/1/windows-10-iot-reed-light-control">Windows 10 IoT开发：干簧管控制的小灯（树莓派3）</a>
                             </div>
                         </div>
-                </div>
+                    </div>
+
             </div>
 
-        </div>
-            <div>
+
+            <section>
                 <h3>Comments (1)</h3>
                 <hr/>
                 <form action="/Comment/WriteComment">
@@ -311,10 +313,24 @@
                     <div class="form-group">
                         <textarea class="form-control" cols="60" rows="4" name="PostCommentModel.Content" placeholder="Comment here"></textarea>
                     </div>
-                </form>
-            </div>
-        </div>
 
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a class="btn btn-success pull-xs-right">View Comments</a>
+                    </div>
+                </form>
+            </section>
+            <div class="comments-container">
+
+            </div>
+            <section id="loadingIndicator" class="mvcLoadingElement" >
+                <img src=""/>
+            </section>
+            <div id="thx-for-comment" class="alert alert-success">
+                Thans for your comment!
+            </div>
+
+        </div>
 
         <aside class="col-lg-3 hidden-xs">
 
@@ -353,8 +369,6 @@
                     <button type="submit" class="btn btn-success pull-xs-right">
                         <i class="fa fa-search"></i>
                     </button>
-
-
 
                 </form>
 
