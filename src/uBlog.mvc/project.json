@@ -15,7 +15,13 @@
   },
 
   "frameworks": {
-    "net452": { }
+    "net452": {
+      "dependencies": {
+        "uBlog.Constants": {
+          "target": "project"
+        }
+      }
+    }
   },
 
   "buildOptions": {

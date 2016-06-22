@@ -21,10 +21,18 @@ namespace uBlog.mvc.Helpers
         {
             HttpClient client = new HttpClient();
 
-            var accessToken = RequestAccessTokenClientCredentials();
-            client.SetBearerToken(accessToken);
+            //client credentials flow
+            //var accessToken = RequestAccessTokenClientCredentials();
 
-            client.BaseAddress = new Uri("localhost:8081/api");
+            var accessToken = RequestAccessTokenAuthorizationCode();
+
+            if(accessToken != null)
+            {
+                client.SetBearerToken(accessToken);
+            }
+
+
+            client.BaseAddress = new Uri(uBlog.Constants.Constants.UBlogAPI);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json")
@@ -62,10 +70,10 @@ namespace uBlog.mvc.Helpers
             return tokenResponse.AccessToken;
         }
 
-        private static string RequestAccessTokenAuthorizationCode()
+        private string RequestAccessTokenAuthorizationCode()
         {
-            var cookieKey = "CCAccessTokenCookie";
-            //CCAccessTokenCookie: Client Credential Access Token Cookie
+            var cookieKey = "ACAccessTokenCookie";
+            //ACAccessTokenCookie: Authorization Code Access Token Cookie
             var accessToken = httpContextAccessor.HttpContext.Request.Cookies[cookieKey];
 
             if (!string.IsNullOrEmpty(accessToken))
@@ -73,7 +81,18 @@ namespace uBlog.mvc.Helpers
                 return accessToken;
             }
 
-            var authorizeRequest = new IdentityModel.Client.AuthorizeRequest();
+            var authorizeRequest = new IdentityModel.Client.AuthorizeRequest(
+                uBlog.Constants.Constants.UBlogSTSAuthorizationEndpoint);
+
+            // state will be delivered to the callback endpoint together with your authorization code
+            var state = httpContextAccessor.HttpContext.Request.Path;
+
+            var url = authorizeRequest.CreateAuthorizeUrl("ublogauthcode", "code", "scope",
+                uBlog.Constants.Constants.UBlogMVCSTSCallback, state);
+
+            httpContextAccessor.HttpContext.Response.Redirect(url);
+
+            return null;
         }
     }
 }
