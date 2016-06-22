@@ -61,5 +61,19 @@ namespace uBlog.mvc.Helpers
 
             return tokenResponse.AccessToken;
         }
+
+        private static string RequestAccessTokenAuthorizationCode()
+        {
+            var cookieKey = "CCAccessTokenCookie";
+            //CCAccessTokenCookie: Client Credential Access Token Cookie
+            var accessToken = httpContextAccessor.HttpContext.Request.Cookies[cookieKey];
+
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                return accessToken;
+            }
+
+            var authorizeRequest = new IdentityModel.Client.AuthorizeRequest();
+        }
     }
 }

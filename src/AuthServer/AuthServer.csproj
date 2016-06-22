@@ -89,6 +89,12 @@
     <Compile Include="Config\Clients.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\uBlog.Constants\uBlog.Constants.csproj">
+      <Project>{e036e0df-c92a-4ec0-a292-771975c3a1d0}</Project>
+      <Name>uBlog.Constants</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
