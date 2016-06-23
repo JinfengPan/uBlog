@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using Microsoft.Extensions.Logging;
+using uBlog.mvc.Helpers;
 
 namespace uBlog.mvc
 {
@@ -28,6 +29,7 @@ namespace uBlog.mvc
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<UBlogHttpClient>();
             services.AddMvc();
         }
 
