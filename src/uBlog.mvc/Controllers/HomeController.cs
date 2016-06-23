@@ -13,6 +13,7 @@ namespace uBlog.mvc.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+
             
             return View();
         }

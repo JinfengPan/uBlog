@@ -32,6 +32,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "uBlog.mvc", "src\uBlog.mvc\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uBlog.Constants", "src\uBlog.Constants\uBlog.Constants.csproj", "{E036E0DF-C92A-4EC0-A292-771975C3A1D0}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "uBlog.api", "src\uBlog.api\uBlog.api.xproj", "{02D6CF4E-8892-418A-A5DF-D70B6CC99E34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,10 @@ Global
 		{E036E0DF-C92A-4EC0-A292-771975C3A1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E036E0DF-C92A-4EC0-A292-771975C3A1D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E036E0DF-C92A-4EC0-A292-771975C3A1D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02D6CF4E-8892-418A-A5DF-D70B6CC99E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02D6CF4E-8892-418A-A5DF-D70B6CC99E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02D6CF4E-8892-418A-A5DF-D70B6CC99E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02D6CF4E-8892-418A-A5DF-D70B6CC99E34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,5 +104,6 @@ Global
 		{CD4F054E-F175-4891-8BA2-4F7AA8999DCE} = {27F74F43-83A8-400E-A2F0-0801A452666E}
 		{1A5E0C19-F829-4112-AFE4-2F5823CED350} = {27F74F43-83A8-400E-A2F0-0801A452666E}
 		{E036E0DF-C92A-4EC0-A292-771975C3A1D0} = {27F74F43-83A8-400E-A2F0-0801A452666E}
+		{02D6CF4E-8892-418A-A5DF-D70B6CC99E34} = {27F74F43-83A8-400E-A2F0-0801A452666E}
 	EndGlobalSection
 EndGlobal

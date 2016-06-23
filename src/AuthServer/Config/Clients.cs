@@ -32,11 +32,11 @@ namespace AuthServer.Config
                     //用来返回token或者auth code
                     RedirectUris = new List<string>
                     {
-                        "localhost:8080/STSCallback"
+                        uBlog.Constants.Constants.UBlogMVCSTSCallback
                     },
                     ClientSecrets = new List<Secret>()
                     {
-                         new Secret ("123".Sha256() )
+                         new Secret (uBlog.Constants.Constants.UBlogClientSecret.Sha256())
                     }
                 }
             };

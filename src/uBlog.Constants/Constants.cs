@@ -8,14 +8,19 @@ namespace uBlog.Constants
 {
     public class Constants
     {
+        #region mvc
         public const string UBlogMVC = "https://localhost:44318";
         public const string UBlogMVCSTSCallback = "https://localhost:44318/stscallback";
-
         public const string UBlogClientSecret = "123";
+        #endregion
 
-        public const string UBlogIssuerUri = "https://tripcompanysts/identity";
+
+
+        #region auth server
+        //只是一个Id，不需要有真实站点
+        public const string UBlogIssuerUri = "https://ublogsts/identity";
         //auth server
-        public const string UBlogSTSOrigin = "https://localhost:44317";
+        public const string UBlogSTSOrigin = "https://localhost:44358";
         //auth server/identity
         public const string UBlogSTS = UBlogSTSOrigin + "/identity";
         //auth server 派发token
@@ -28,8 +33,11 @@ namespace uBlog.Constants
         public const string UBlogSTSEndSessionEndpoint = UBlogSTS + "/connect/endsession";
         //auth server 撤销token
         public const string UBlogSTSRevokeTokenEndpoint = UBlogSTS + "/connect/revocation";
+        #endregion
 
-        public const string UBlogAPI = "https://localhost:44319/api";
+        #region api
+        public const string UBlogAPI = "https://localhost:44363/";
+        #endregion
 
     }
 }
