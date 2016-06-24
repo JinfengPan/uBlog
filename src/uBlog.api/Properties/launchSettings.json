@@ -1,9 +1,9 @@
 {
   "iisSettings": {
     "windowsAuthentication": false,
-    "anonymousAuthentication": false,
+    "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:44363/",
+      "applicationUrl": "http://localhost:44362/",
       "sslPort": 44363
     }
   },
@@ -18,7 +18,7 @@
     "uBlog.api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5000",
+      "launchUrl": "http://localhost:44362",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

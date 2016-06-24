@@ -54,6 +54,7 @@ namespace uBlog
             });
 
             services.AddMvc();
+            services.AddSession();
             services.AddSingleton<ISensorDataService, SensorDataService>();
             services.AddSingleton<IBlogPostService, BlogPostService>();
             services.AddSingleton(typeof(UBlogContext), 

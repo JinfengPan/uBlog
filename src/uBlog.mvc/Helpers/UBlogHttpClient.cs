@@ -40,6 +40,10 @@ namespace uBlog.mvc.Helpers
             return client;
         }
 
+        /// <summary>
+        /// 客户端获取证书
+        /// </summary>
+        /// <returns></returns>
         private string RequestAccessTokenClientCredentials()
         {
             var cookieKey = "CCAccessTokenCookie";
@@ -54,9 +58,9 @@ namespace uBlog.mvc.Helpers
             //create a Token Client
             //TokenClient is used to easily access the token endpoint.
             var tokenClient = new TokenClient(
-                "tokenEndpoint",
-                "ublogmvc",//clientId
-                "123" //client secret
+                uBlog.Constants.Constants.UBlogSTSRevokeTokenEndpoint,
+                "ublogauthcode",//clientId
+                uBlog.Constants.Constants.UBlogClientSecret //client secret
                 );
 
             var tokenResponse = tokenClient.RequestClientCredentialsAsync("gallerymanagment").Result;
@@ -70,6 +74,10 @@ namespace uBlog.mvc.Helpers
             return tokenResponse.AccessToken;
         }
 
+        /// <summary>
+        /// 通过授权码获取证书
+        /// </summary>
+        /// <returns></returns>
         private string RequestAccessTokenAuthorizationCode()
         {
             var cookieKey = "ACAccessTokenCookie";
@@ -84,10 +92,13 @@ namespace uBlog.mvc.Helpers
             var authorizeRequest = new IdentityModel.Client.AuthorizeRequest(
                 uBlog.Constants.Constants.UBlogSTSAuthorizationEndpoint);
 
+            Microsoft.AspNetCore.Http.Extensions.UriHelper.GetEncodedUrl(
+                httpContextAccessor.HttpContext.Request);
             // state will be delivered to the callback endpoint together with your authorization code
-            var state = httpContextAccessor.HttpContext.Request.Path;
+            var state = Microsoft.AspNetCore.Http.Extensions.UriHelper.GetEncodedUrl(
+                httpContextAccessor.HttpContext.Request);
 
-            var url = authorizeRequest.CreateAuthorizeUrl("ublogauthcode", "code", "scope",
+            var url = authorizeRequest.CreateAuthorizeUrl("ublogauthcode", "code", "blogmanagement",
                 uBlog.Constants.Constants.UBlogMVCSTSCallback, state);
 
             httpContextAccessor.HttpContext.Response.Redirect(url);

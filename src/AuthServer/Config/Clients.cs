@@ -19,7 +19,7 @@ namespace AuthServer.Config
                     Flow = Flows.ClientCredentials,
                     ClientSecrets = new List<Secret>()
                     {
-                        new Secret ("123".Sha256() )
+                        new Secret (uBlog.Constants.Constants.UBlogClientSecret.Sha256())
                     },
                     AllowAccessToAllScopes = true
                 },

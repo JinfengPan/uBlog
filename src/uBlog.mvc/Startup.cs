@@ -31,6 +31,8 @@ namespace uBlog.mvc
         {
             services.AddSingleton<UBlogHttpClient>();
             services.AddMvc();
+            services.AddSession();
+            services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

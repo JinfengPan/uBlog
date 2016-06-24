@@ -35,6 +35,7 @@ namespace uBlog.api
                 ScopeName = "blogmanagement",
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true,
+
                 RequireHttpsMetadata = false,
 
             });

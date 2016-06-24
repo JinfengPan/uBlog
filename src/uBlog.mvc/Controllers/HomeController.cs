@@ -25,7 +25,12 @@ namespace uBlog.mvc.Controllers
         {
             var uri = uBlog.Constants.Constants.UBlogAPI + "claims";
             var response = await uBlogClient.GetAsync(uri);
-            return Json(response);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok(response.Content);
+            }
+            return null;
         }
     }
 }
