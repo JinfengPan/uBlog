@@ -18,27 +18,50 @@ namespace uBlog.Data
             this.Tags = new List<string>();
         }
 
-        //主键
+        /// <summary>
+        /// 主键
+        /// </summary>
         [BsonRepresentation(BsonType.ObjectId)]
         public string BlogPostId { get; set; }
 
-        //作者外键
+        /// <summary>
+        /// 作者外键
+        /// </summary>
         public string AuthorId { get; set; }
 
-        //作者名称
+        /// <summary>
+        /// 作者名称
+        /// </summary>
         public string AuthorName { get; set; }
 
-
+        /// <summary>
+        /// 创建时间
+        /// </summary>
         public DateTime CreateTime { get; set; }
 
-        //博客内容
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        public DateTime UpdateTime { get; set; }
+
+        /// <summary>
+        /// 博客内容
+        /// </summary>
         public string Detail { get; set; }
 
-        //博客获得的赞
+        /// <summary>
+        /// 博客获得的赞
+        /// </summary>
         public List<ProItem> Pros { get; set; }
 
+        /// <summary>
+        /// 博客获得的赞的数目
+        /// </summary>
         public int ProsCount { get; set; }
 
+        /// <summary>
+        /// 最近的读者
+        /// </summary>
         public List<BlogReader> LatestReaders { get; set; }
 
         //博客标签

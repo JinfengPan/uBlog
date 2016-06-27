@@ -21,6 +21,12 @@
       "dependencies": {
         "uBlog.Constants": {
           "target": "project"
+        },
+        "uBlog.Data": {
+          "target": "project"
+        },
+        "uBlog.Repository": {
+          "target": "project"
         }
       }
     }
