@@ -56,7 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogPostRepository.cs" />
     <Compile Include="BlogUserRepository.cs" />
+    <Compile Include="BookRepository.cs" />
     <Compile Include="UBlogContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
