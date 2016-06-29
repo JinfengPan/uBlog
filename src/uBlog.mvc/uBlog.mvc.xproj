@@ -23,6 +23,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\uBlog.Constants\uBlog.Constants.csproj" />
+    <ProjectReference Include="..\uBlog.Data\uBlog.Data.csproj" />
+    <ProjectReference Include="..\uBlog.IRepository\uBlog.IRepository.csproj" />
+    <ProjectReference Include="..\uBlog.Repository\uBlog.Repository.csproj" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\DotNet.Web\Microsoft.DotNet.Web.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

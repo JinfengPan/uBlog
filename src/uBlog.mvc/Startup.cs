@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using System.IO;
 using Microsoft.Extensions.Logging;
 using uBlog.mvc.Helpers;
-
+using Microsoft.AspNetCore.Diagnostics;
 namespace uBlog.mvc
 {
     public class Startup
@@ -45,7 +45,6 @@ namespace uBlog.mvc
 
             var logger = loggerFactory.CreateLogger("info");
 
-            app.UseRuntimeInfoPage("/info");
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
@@ -57,5 +56,7 @@ namespace uBlog.mvc
                 await context.Response.WriteAsync("Hello World!");
             });
         }
+
+
     }
 }

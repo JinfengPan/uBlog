@@ -12,20 +12,18 @@ namespace uBlog.Repository
     public class UBlogContext
     {
         public IMongoDatabase Database;
-        public GridFSBucket docsBucket { get; set; }
 
-        public UBlogContext(string connectionString, string dbName)
+        public UBlogContext()
         {
-            var client = new MongoClient(connectionString);
-            Database = client.GetDatabase(dbName);
-            docsBucket = new GridFSBucket(Database);
+            var client = new MongoClient("mongodb://localhost");
+            Database = client.GetDatabase("ublog");
         }
 
-        public IMongoCollection<BlogPost> BlogPosts 
-            => Database.GetCollection<BlogPost>("blogPosts");
 
-        public IMongoCollection<BlogUser> Users
-            => Database.GetCollection<BlogUser>("users");
+        public IMongoCollection<TEntity> GetCollection<TEntity>()
+        {
+            return Database.GetCollection<TEntity>(typeof(TEntity).Name.ToLower() + "s");
+        }
 
     }
 }

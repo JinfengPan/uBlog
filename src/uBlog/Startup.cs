@@ -57,11 +57,11 @@ namespace uBlog
             services.AddSession();
             services.AddSingleton<ISensorDataService, SensorDataService>();
             services.AddSingleton<IBlogPostService, BlogPostService>();
-            services.AddSingleton(typeof(UBlogContext), 
-                new UBlogContext(
-                    configuration["MongoDBCollectionString"],
-                    configuration["MondoDBNames:uBlog"]
-                ));
+            //services.AddSingleton(typeof(UBlogContext), 
+            //    new UBlogContext(
+            //        configuration["MongoDBCollectionString"],
+            //        configuration["MondoDBNames:uBlog"]
+            //    ));
 
 
         }

@@ -12,6 +12,13 @@
         "../../packages/MongoDB.Driver.2.2.4/lib/net45/MongoDB.Driver.dll": {},
         "../../packages/MongoDB.Driver.Core.2.2.4/lib/net45/MongoDB.Driver.Core.dll": {},
         "bin/Debug/uBlog.Data.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/uBlog.Data.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
       }
     },
     "uBlog.IServices/1.0.0": {
@@ -22,6 +29,13 @@
       },
       "runtime": {
         "bin/Debug/uBlog.IServices.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/uBlog.IServices.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
       }
     },
     "uBlog.Repository/1.0.0": {
@@ -36,6 +50,13 @@
         "../../packages/MongoDB.Driver.Core.2.2.4/lib/net45/MongoDB.Driver.Core.dll": {},
         "../../packages/MongoDB.Driver.GridFS.2.2.4/lib/net45/MongoDB.Driver.GridFS.dll": {},
         "bin/Debug/uBlog.Repository.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/uBlog.Repository.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
       }
     },
     "uBlog.Services/1.0.0": {
@@ -46,6 +67,13 @@
       },
       "runtime": {
         "bin/Debug/uBlog.Services.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/uBlog.Services.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
       }
     }
   }

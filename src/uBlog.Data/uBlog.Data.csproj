@@ -55,6 +55,7 @@
     <Compile Include="BlogPost.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Contact.cs" />
+    <Compile Include="DTOs\Results.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

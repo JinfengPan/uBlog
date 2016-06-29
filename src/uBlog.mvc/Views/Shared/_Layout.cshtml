@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <!--头部导航-->
+    @Html.Partial("_NavBar_Head")
+    <!--头部导航 end-->
+
+
+    <div class="container">
+        <div class="row">
+            <!--主内容区-->
+            <section class="col-lg-9">
+                @RenderBody()
+            </section>
+            <!--主内容区 end-->
+
+            <!--边栏-->
+            <aside class="col-lg-3 hidden-xs">
+                @Html.Partial("_SideBar")
+            </aside>
+            <!--边栏 end-->
+        </div>
+    </div>
+    
+
+
+    <!--页脚-->
+    <footer class="container">
+        <small><span>© 2016 Patrick Pan</span></small>
+    </footer>
+    <!--页脚 end-->
+</body>
+</html>

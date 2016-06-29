@@ -45,6 +45,11 @@ namespace uBlog.Data
         public DateTime UpdateTime { get; set; }
 
         /// <summary>
+        /// 博客标题
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
         /// 博客内容
         /// </summary>
         public string Detail { get; set; }
