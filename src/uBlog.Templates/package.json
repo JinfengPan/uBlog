@@ -26,6 +26,7 @@
     "jshint-loader": "^0.8.3",
     "node-libs-browser": "^1.0.0",
     "node-sass": "^3.7.0",
+    "npm-install-webpack-plugin": "^4.0.3",
     "postcss-loader": "^0.9.1",
     "precss": "^1.4.0",
     "sass-loader": "^3.2.0",
