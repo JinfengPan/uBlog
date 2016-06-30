@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --watch-poll --inline --hot"
+    "start": "webpack-dev-server --watch-poll --inline --hot",
+    "build": "webpack --config webpack-production.config.js -p"
   },
   "keywords": [],
   "author": "",
@@ -33,7 +34,8 @@
     "timestamp-webpack-plugin": "^0.2.3",
     "transfer-webpack-plugin": "^0.1.4",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-merge": "^0.14.0"
   },
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.2",

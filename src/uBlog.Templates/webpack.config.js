@@ -1,14 +1,24 @@
 var path = require('path');
 var webpack = require('webpack');
 
+const TARGET = process.env.npm_lifecycle_event;
+
+
 //提取多个入口文件的公共脚本部分，然后生成一个 common.js 来方便多页面之间进行复用
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('shared.js');
+var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('./js/shared.js');
 //将bundle中的css文本抽取出来形成独立文件
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 //Emits a JSON file that contains timestamps of your Webpack build
 var TimestampWebpackPlugin = require('timestamp-webpack-plugin');
 //Transfer files to the build directory(可以传送文件或文件夹)
 var TransferWebpackPlugin = require('transfer-webpack-plugin');
+
+var extractTextPlugin = null;
+if(TARGET === 'start' || !TARGET){
+  extractTextPlugin = new ExtractTextPlugin("./css/style.css")
+}else if(TARGET ==='build'){
+  extractTextPlugin = new ExtractTextPlugin("../css/[name][hash:8].css")
+}
 
 //供postcss使用 start
 var precss = require('precss');
@@ -32,10 +42,10 @@ module.exports ={
   output:{
 
     //[bundle].js存储的真实路径
-    path: path.resolve('build/js/'),
+    path: path.resolve('build/'),
     //使用devserver时，浏览器访问[bundle].js的虚拟路径
-    publicPath:'/public/assets/js/',
-    filename: "[name].js"
+    publicPath:'/public/',
+    filename: "./js/[name].js"
 
 
   },
@@ -43,7 +53,7 @@ module.exports ={
     commonsPlugin,
     //The extract-text-plugin generates an output file per entry,
     //so you must use [name],[id] or [contenthash] when using multiple entries.
-    new ExtractTextPlugin("./css/[name][hash:8].css"),
+    extractTextPlugin,
 
     new webpack.ProvidePlugin({
       $:'jquery',
@@ -87,13 +97,13 @@ module.exports ={
       },
       {
         test:/\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader","css-loader!postcss-loader")
+        loader: ExtractTextPlugin.extract("style-loader","css-loader")
       },
       {
         test:/\.scss$/,
         exclude:/node_modules/,
         //ExtractTextPlugin.extract() Creates an extracting loader from an existing loader
-        loader: ExtractTextPlugin.extract("style-loader","css-loader!postcss-loader!sass-loader")
+        loader: ExtractTextPlugin.extract("style-loader","css-loader!sass-loader")
       },
       {
         test:/\.(ttf|eot)$/,
