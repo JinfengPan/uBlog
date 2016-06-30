@@ -13,7 +13,6 @@ namespace uBlog.Data
     {
         public BlogPost()
         {
-            this.Pros = new List<ProItem>();
             this.LatestReaders = new List<BlogReader>();
             this.Tags = new List<string>();
         }
@@ -22,7 +21,7 @@ namespace uBlog.Data
         /// 主键
         /// </summary>
         [BsonRepresentation(BsonType.ObjectId)]
-        public string BlogPostId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// 作者外键
@@ -54,10 +53,6 @@ namespace uBlog.Data
         /// </summary>
         public string Detail { get; set; }
 
-        /// <summary>
-        /// 博客获得的赞
-        /// </summary>
-        public List<ProItem> Pros { get; set; }
 
         /// <summary>
         /// 博客获得的赞的数目
@@ -74,8 +69,16 @@ namespace uBlog.Data
         
     }
 
+    
+
+
+    /// <summary>
+    /// 点赞
+    /// </summary>
     public class ProItem
     {
+
+
         //点赞人的外键
         [BsonIgnoreIfNull]
         public string ProerId { get; set; }
@@ -84,6 +87,7 @@ namespace uBlog.Data
         [BsonIgnoreIfNull]
         public string ProerName { get; set; }
 
+        //点赞时间
         public DateTime CreateTime { get; set; }
 
     }

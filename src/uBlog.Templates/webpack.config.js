@@ -20,7 +20,6 @@ module.exports ={
   //基础路径(绝对路径)，用来解析entry项
   context: path.resolve('js'),
 
-
   //字符串会被解析得到一个module
   //数组中的所有module都会被加载，数组中最后一个module会被导出(export)
   //如果你传一个对象，那么将会生成几个bundle
