@@ -6,11 +6,13 @@
  */
 webpackJsonp([0,2],[
 /* 0 */
+/*!*********************!*\
+  !*** ./editpost.js ***!
+  \*********************/
 /***/ function(module, exports) {
 
 	"use strict";
 
-	var editor = new EpicEditor().load();
-
 /***/ }
 ]);
+//# sourceMappingURL=editpost.js.map
