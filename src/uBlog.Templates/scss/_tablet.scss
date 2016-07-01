@@ -1,0 +1,49 @@
+/*----HEADER--------*/
+header .logo img{
+  width:auto;
+}
+
+/*------SOCIAL----*/
+header .social{
+  position:relative;
+  float:right;
+}
+
+/*------MAIN---------*/
+
+
+
+
+/*-----SUB NAV-----*/
+.hideSmall{
+  display: inline;
+}
+
+
+
+
+/*------COLUMNS----------*/
+main{
+
+  .width6{
+    float:left;
+    width: 6/12 * 100%;
+  }
+
+  /*---------NEWSPAPER STYLE COLUMNS-----*/
+  .multicol{
+    @include columns(2, $dkgrey);
+  }
+
+
+}
+
+@for $i from 1 through 12{
+
+  $w: $i/12 * 100%;
+
+  .large-#{$i}{
+    width: $w;
+    float:left;
+  }
+}

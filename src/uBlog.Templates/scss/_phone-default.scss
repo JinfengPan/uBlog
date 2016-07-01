@@ -1,0 +1,214 @@
+/*----Prevents iPhone from resizing in landscape mode ----*/
+html{-webkit-text-size-adjust: none;}
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  font-size:16px;
+}
+
+/*---------HEADER--------*/
+header{
+  padding: 1em $gutter .5em $gutter;
+  border-bottom: solid 1px $ltgrey;
+
+  h1,h2{
+    display:none;
+  }
+
+  .logo{
+    float:left;
+  }
+
+  .logo img{
+    width:200px;
+  }
+} /*end of header */
+
+
+
+
+/*---------SOCIAL--------*/
+.social{
+  float:right;
+  padding-top:.5em;
+  z-index:99;
+}
+
+.social li{
+  float:right;
+}
+
+.social li a{
+  display:block;
+  padding-left:10px;
+}
+
+/*--------NAVIGATION----*/
+nav{
+  position: absolute;
+  top:0;
+  left:0;
+  background-color:$menu-color;
+  height:44px;
+  width:100%;
+}
+
+/*-------MAIN-----*/
+main{
+  display: block;
+  min-height: 25em;
+
+  h1{
+     font-size:3em;
+     color: $h1_color;
+     padding-top: .75em;
+     font-weight:$heavy;
+   }
+
+  h2{
+    font-size:2em;
+    color: $h2_color;
+    padding-top: .5em;
+    font-weight:$heavy;
+    clear:both;
+  }
+
+  h3{
+    font-size:1.5em;
+    color: $h3_color;
+    padding-top: .5em;
+    font-weight:$heavy;
+  }
+
+  p{
+    font-size:1em;
+    color: $text-color;
+    padding-top: .4em;
+    font-weight:$normal;
+    line-height: 130%;
+  }
+
+  strong{
+    font-weight:$heavy;
+  }
+
+  a{
+    color:$link_color;
+  }
+
+
+
+
+}/*end of main*/
+
+
+/*----SUB NAV----*/
+%subnav{
+  display:block;
+  float:left;
+  width:50%;
+  margin: 2em 0 0 0;
+  padding: .5em 1em .2em 1em;
+  color:$dkgrey;
+  border: solid 1px $orange;
+  text-decoration:none;
+  border-radius: 10px 10px 0 0;
+  transition: background ease .5s;
+
+}
+
+.subnav-link{
+  @extend %subnav;
+
+  background-color: $ltgrey;
+}
+
+
+.subnav-link:hover{
+  @extend %subnav;
+  background-color: $orange;
+}
+
+.subnav-active{
+  @extend %subnav;
+  background-color:$blue;
+}
+
+.hideSmall{
+  display:none;
+}
+
+
+/*-----LISTS-----*/
+@mixin a_list(){
+  background-repeat:no-repeat;
+  padding: .5em 0 .5em 1.5em;
+  background-position:left center;
+  margin-left: 1em;
+}
+
+ul.list-check-yes li{
+  @include a_list();
+  background-color: $orange;
+}
+
+ul.list-check-no li{
+  @include a_list();
+  background-color:$ltgrey;
+}
+
+
+/*-------------COLUMNS----------*/
+main{
+  .row{
+    clear:both;
+  }
+  .column{
+    padding:0 $gutter;
+  }
+}
+
+@for $i from 1 through 12{
+
+  $w: $i/12 * 100%;
+
+  .small-#{$i}{
+    width: $w;
+    float:left;
+  }
+}
+
+/*------IMAGES---------*/
+img.triangle{
+  float:left;
+  shape-outside:polygon(0 0, 100% 0, 0 100%);
+  margin:10px 20px 20px 0;
+}
+
+
+/*-----FOOTER-------*/
+footer{
+  clear:both;
+  font-size:.8em;
+  text-align:center;
+  padding:2em 0 .6em 0;
+  color: $brown;
+  font-weight: $heavy;
+  a{
+    color: $brown;
+  }
+}/* end of the footer */
+
+
+/*----OTHER-----*/
+.clearfix:after{
+  content: ".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility: hidden;
+
+}

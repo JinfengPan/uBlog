@@ -16,9 +16,9 @@ var TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 var extractTextPlugin = null;
 if(TARGET === 'start' || !TARGET){
-  extractTextPlugin = new ExtractTextPlugin("./css/style.css")
+  extractTextPlugin = new ExtractTextPlugin("./css/[name].css")
 }else if(TARGET ==='build'){
-  extractTextPlugin = new ExtractTextPlugin("../css/[name][hash:8].css")
+  extractTextPlugin = new ExtractTextPlugin("../css/[name]-[hash:8].css")
 }
 
 //供postcss使用 start
@@ -37,7 +37,8 @@ module.exports ={
 
   entry:{
     index:'./index.js',
-    editpost: './editpost.js'
+    editpost: './editpost.js',
+    proindex: './proindex.js'
 
   },
   output:{

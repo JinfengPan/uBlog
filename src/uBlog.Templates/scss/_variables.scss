@@ -1,0 +1,37 @@
+/*-----SCSS FOR COLORS-----*/
+$brown: #a47027;
+$orange: #ecbc4d;
+$blue: #a8c6ef;
+$dkgrey: #858585;
+$ltgrey: #f0f0f3;
+
+$text-color: $dkgrey;
+$menu-color: $blue;
+$body-color: #fff;
+$link_color: $brown;
+$h1_color:$brown;
+$h2_color:$orange;
+$h3_color:$blue;
+
+/*-----SCSS FOR FONT FAMILY-------*/
+$default_font_family: 'Quicksand', sans-serif;
+$normal: 400;
+$heavy: 700;
+
+/*------SCSS GUTTER---------*/
+$gutter: 2%;
+
+/*------SCSS MIXIN for MULTIPLE COLUMNS--------*/
+@mixin columns($count, $line_color){
+  -webkit-column-count:$count;
+  -moz-column-count:$count;
+  column-count:$count;
+
+  -webkit-column-gap: $gutter;
+  -moz-column-gap:$gutter;
+  column-gap:$gutter;
+
+  -webkit-column-rule: 1px outset $line_color;
+  -moz-column-rule: 1px outset $line_color;
+  column-rule:1px outset $line_color;
+}
