@@ -1,0 +1,21 @@
+﻿@{ 
+    Layout = "_Layout";
+}
+
+    <div class="container">
+        <div class="row">
+            <!--主内容区-->
+            <section class="col-lg-9">
+                @RenderBody()
+            </section>
+            <!--主内容区 end-->
+
+            <!--边栏-->
+            <aside class="col-lg-3 hidden-xs">
+                @Html.Partial("_SideBar")
+            </aside>
+            <!--边栏 end-->
+        </div>
+    </div>
+    
+

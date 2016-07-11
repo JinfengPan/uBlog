@@ -15,7 +15,7 @@ namespace uBlog.Repository
 
         public UBlogContext()
         {
-            var client = new MongoClient("mongodb://localhost");
+            var client = new MongoClient("mongodb://139.196.59.203");
             Database = client.GetDatabase("ublog");
         }
 

@@ -1,0 +1,71 @@
+﻿@model uBlog.Data.BlogPost
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+@section Header{
+<link rel="stylesheet"
+      href="//cdn.rawgit.com/balpha/pagedown/master/demo/browser/demo.css" />
+
+<style>
+    .wmd-button > span {
+        background-image: url('//cdn.rawgit.com/derobins/wmd/master/images/wmd-buttons.png');
+        background-repeat: no-repeat;
+        background-position: 0px 0px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+    }
+</style>
+
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <div class="row">
+                <!--markdown编辑区-->
+                <section class="col-xs-6">
+                    <form action="EditPost" method="post">
+                        <input type="hidden" name="Id" value="@Model.Id"/>
+                        <div class="form-group">
+                            <input type="text" name="Title" class="form-control" value="@Model.Title"/>
+                        </div>
+
+                        <div class="form-group">
+                            <div id="wmd-button-bar"></div>
+
+                            <textarea id="wmd-input" class="wmd-input form-control" name="Content">@Model.Content</textarea>
+
+                        </div>
+
+                        <button type="submit">提交</button>
+                    </form>
+
+                </section>
+                <!--markdown编辑区 end-->
+                
+                <!--markdown预览区-->
+                <section class="col-xs-6">
+                    <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+                </section>
+                <!--markdown预览区 end-->
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@section Footer{
+<script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Converter.js"> </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Editor.js"> </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Sanitizer.js"> </script>
+<script>
+    var converter = Markdown.getSanitizingConverter();
+    var editor = new Markdown.Editor(converter);
+    editor.run();
+</script>
+}

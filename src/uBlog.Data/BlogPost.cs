@@ -51,7 +51,7 @@ namespace uBlog.Data
         /// <summary>
         /// 博客内容
         /// </summary>
-        public string Detail { get; set; }
+        public string Content { get; set; }
 
 
         /// <summary>

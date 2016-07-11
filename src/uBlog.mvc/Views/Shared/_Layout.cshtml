@@ -6,28 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@ViewBag.Title</title>
+    <link href="~/css/index.css" rel="stylesheet"/>
+    @RenderSection("Header", false)
 </head>
 <body>
     <!--头部导航-->
     @Html.Partial("_NavBar_Head")
     <!--头部导航 end-->
 
-
-    <div class="container">
-        <div class="row">
-            <!--主内容区-->
-            <section class="col-lg-9">
-                @RenderBody()
-            </section>
-            <!--主内容区 end-->
-
-            <!--边栏-->
-            <aside class="col-lg-3 hidden-xs">
-                @Html.Partial("_SideBar")
-            </aside>
-            <!--边栏 end-->
-        </div>
-    </div>
+    @RenderBody()
+  
     
 
 
@@ -36,5 +24,6 @@
         <small><span>© 2016 Patrick Pan</span></small>
     </footer>
     <!--页脚 end-->
+    @RenderSection("Footer", false)
 </body>
 </html>
