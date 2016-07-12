@@ -2,6 +2,7 @@
 body{
     color: #2f2f2f;
     font-family: "Microsoft YaHei","Segoe UI","Arial","Verdana","Tahoma";
+    font-size:16px;
 }
 a, a:link, a:active, a:hover, a:visited {
     text-decoration: none;
@@ -13,7 +14,6 @@ a, a:link, a:active, a:hover, a:visited {
     color:#fff;
     background-color: #3A506B;
     border-radius:0;
-    padding:0;
 }
 
 .navbar a{
@@ -29,22 +29,15 @@ a, a:link, a:active, a:hover, a:visited {
 }
 
 
-#ublog-logo{
-    font-size:26px;
-    line-height:36px;
-}
+
 
 @media (min-width: 768px){
     .navbar .navbar-nav>li>a {
-        padding: 10px 20px;
         color: #fff;
     }
 }
 
 
-.navbar-nav .nav-item + .nav-item {
-    margin-left: 0;
-}
 
 #header{
     margin-bottom:2rem;
@@ -61,6 +54,11 @@ h1, h2, h3, h4, h5, h6,
     font-family: "Microsoft YaHei UI","Microsoft YaHei","Arial","Verdana","Tahoma";
     font-weight: 500;
     color: #1C2541;
+}
+
+h4{
+    font-size: 18px;
+    font-weight:700;
 }
 
 .post-summary-text {
@@ -116,5 +114,8 @@ h1, h2, h3, h4, h5, h6,
     background-color: #5BC0BE;
 }
 
-
+.blogpost-info{
+    color: #999999;
+    font-size:12px;
+}
 

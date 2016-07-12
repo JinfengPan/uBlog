@@ -5,13 +5,13 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.5.2",
       "compile": {
-        "bin/Debug/uBlog.Constants.dll": {}
+        "bin/Release/uBlog.Constants.dll": {}
       },
       "runtime": {
-        "bin/Debug/uBlog.Constants.dll": {}
+        "bin/Release/uBlog.Constants.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/uBlog.Constants.pdb": {
+        "bin/Release/uBlog.Constants.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
@@ -22,16 +22,16 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.5.2",
       "compile": {
-        "bin/Debug/uBlog.Data.dll": {}
+        "bin/Release/uBlog.Data.dll": {}
       },
       "runtime": {
         "../../packages/MongoDB.Bson.2.2.4/lib/net45/MongoDB.Bson.dll": {},
         "../../packages/MongoDB.Driver.2.2.4/lib/net45/MongoDB.Driver.dll": {},
         "../../packages/MongoDB.Driver.Core.2.2.4/lib/net45/MongoDB.Driver.Core.dll": {},
-        "bin/Debug/uBlog.Data.dll": {}
+        "bin/Release/uBlog.Data.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/uBlog.Data.pdb": {
+        "bin/Release/uBlog.Data.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
@@ -42,13 +42,13 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.5.2",
       "compile": {
-        "bin/Debug/uBlog.IRepository.dll": {}
+        "bin/Release/uBlog.IRepository.dll": {}
       },
       "runtime": {
-        "bin/Debug/uBlog.IRepository.dll": {}
+        "bin/Release/uBlog.IRepository.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/uBlog.IRepository.pdb": {
+        "bin/Release/uBlog.IRepository.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
@@ -59,17 +59,17 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.5.2",
       "compile": {
-        "bin/Debug/uBlog.Repository.dll": {}
+        "bin/Release/uBlog.Repository.dll": {}
       },
       "runtime": {
         "../../packages/MongoDB.Bson.2.2.4/lib/net45/MongoDB.Bson.dll": {},
         "../../packages/MongoDB.Driver.2.2.4/lib/net45/MongoDB.Driver.dll": {},
         "../../packages/MongoDB.Driver.Core.2.2.4/lib/net45/MongoDB.Driver.Core.dll": {},
         "../../packages/MongoDB.Driver.GridFS.2.2.4/lib/net45/MongoDB.Driver.GridFS.dll": {},
-        "bin/Debug/uBlog.Repository.dll": {}
+        "bin/Release/uBlog.Repository.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/uBlog.Repository.pdb": {
+        "bin/Release/uBlog.Repository.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true

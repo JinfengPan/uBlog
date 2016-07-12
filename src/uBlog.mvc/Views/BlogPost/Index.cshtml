@@ -9,26 +9,20 @@
     @foreach (var blogPost in Model)
     {
         <article>
-            <div class="row">
-                <div class="col-md-1" hidden-xs hidden-sm>
-                    <h1 class="post-date-day">21</h1>
-                    MAY
-                </div>
-                <div class="col-md-11">
-
-                    <h4 class="">
-                        <a href="" title="145 Read(s), 1 Comment(s)">@blogPost.Title</a>
-                    </h4>
-                    <section>
-                        @Html.Raw(markdown.Transform(blogPost.Content))
-                    </section>
-                    <ul class="tags">
-                        <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
-                        <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
-                        <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
-                    </ul>
-                </div>
+            <div class="blogpost-info">
+                <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;2016.07.10 16:53</p>
             </div>
+            <h4 class="">
+                <a href="" title="145 Read(s), 1 Comment(s)">@blogPost.Title</a>
+            </h4>
+            <section>
+                @Html.Raw(markdown.Transform(blogPost.Content))
+            </section>
+            <ul class="tags">
+                <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+                <li class="tag-item"><a class="tag-link" href="#">Windows 10</a></li>
+            </ul>
         </article>
         <hr />
 

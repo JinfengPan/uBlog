@@ -11,6 +11,8 @@ using System.IO;
 using Microsoft.Extensions.Logging;
 using uBlog.mvc.Helpers;
 using Microsoft.AspNetCore.Diagnostics;
+//using Microsoft.AspNet.Builder;
+
 namespace uBlog.mvc
 {
     public class Startup

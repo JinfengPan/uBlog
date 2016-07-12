@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@ViewBag.Title</title>
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="~/css/index.css" rel="stylesheet"/>
     @RenderSection("Header", false)
 </head>
@@ -23,6 +24,8 @@
     <footer class="container">
         <small><span>© 2016 Patrick Pan</span></small>
     </footer>
+    <script src="~/jquery/jquery.min.js"></script>
+    <script src="~/bootstrap/js/bootstrap.min.js"></script>
     <!--页脚 end-->
     @RenderSection("Footer", false)
 </body>

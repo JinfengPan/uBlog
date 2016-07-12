@@ -19,13 +19,15 @@ var transferwebpackPlugin = null;
 if(TARGET === 'start' || !TARGET){
   extractTextPlugin = new ExtractTextPlugin("./css/[name].css");
   transferwebpackPlugin = new TransferWebpackPlugin([
-    {from:'./epiceditor/epiceditor' , to:"../../public/epiceditor"},
     {from:'./bootstrap/dist' , to:"../../public/bootstrap"},
     {from:'./jquery/dist' , to:"../../public/jquery"}
   ], path.join(__dirname, "node_modules"));
 }else if(TARGET ==='build'){
   extractTextPlugin = new ExtractTextPlugin("./css/[name]-[hash:8].css")
-  transferwebpackPlugin = new TransferWebpackPlugin([{from:'epiceditor' , to:"./epiceditor"}], path.join(__dirname, "node_modules/epiceditor"));
+  transferwebpackPlugin = new TransferWebpackPlugin([
+    {from:'./bootstrap/dist' , to:"./bootstrap"},
+    {from:'./jquery/dist' , to:"./jquery"}
+  ], path.join(__dirname, "node_modules"));
 }
 
 //供postcss使用 start

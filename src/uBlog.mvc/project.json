@@ -16,6 +16,7 @@
     "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
     "Markdown": "1.14.7"
+
   },
 
   "tools": {
